@@ -1,19 +1,12 @@
 {
   "name": "Concurso Bíblico",
   "short_name": "Concurso Bíblico",
-  "description": "Jogo bíblico de perguntas por fases.",
+  "description": "Jogo bíblico de perguntas para celular, Android e iPhone.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#071224",
   "theme_color": "#071224",
   "orientation": "portrait",
-  "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
+  "icons": [{"src":"icon.svg","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]
 }
