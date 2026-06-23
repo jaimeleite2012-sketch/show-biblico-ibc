@@ -1,11 +1,14 @@
-CONCURSO BÍBLICO V14.4 · LOGO VISÍVEL
+CONCURSO BÍBLICO V14.5 · PROGRESSÃO E EFEITOS
 
-Correção aplicada:
-- Logo do cordeiro e espada em branco.
-- Fundo totalmente transparente.
-- Removido bloco/quadrado preto.
-- Logo também embutido dentro do index.html para evitar falha de carregamento por cache ou caminho de arquivo.
-- Mantidos os recursos da V14.1/V14.3: banco completo, respostas embaralhadas, modos, ranking, medalhas e pontuação.
+Novidades:
+- Resposta correta: confete e avanço automático para a próxima pergunta.
+- Resposta errada: explosão vermelha piscante e avanço automático para a próxima pergunta.
+- O jogo não revela a resposta correta durante a rodada.
+- Tempo esgotado também pula automaticamente para a próxima pergunta.
+- Fases bloqueadas: Fase 2 só libera após completar cumulativamente a Fase 1; e assim sucessivamente.
+- Desafio Final só libera após concluir a Fase 5.
+- Progresso salvo localmente no navegador/celular.
+- Mantidos: banco completo embutido, ranking local, medalhas, combos, pontuação, modos especiais e logo oficial.
 
-Teste no GitHub Pages:
-https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=14.4
+Link de teste após publicar no GitHub:
+https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=14.5
