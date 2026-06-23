@@ -6,21 +6,23 @@
   <meta name="theme-color" content="#071224">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Show Bíblico IBC">
+  <meta name="apple-mobile-web-app-title" content="Concurso Bíblico">
   <link rel="manifest" href="manifest.webmanifest">
-  <title>Show Bíblico IBC</title>
+  <title>Concurso Bíblico</title>
+  <script defer src="questionBank.js?v=13.5"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <style>
     :root{--bg:#06101f;--card:#0e1d35;--text:#f8fafc;--muted:#a8b3c7;--gold:#f7c948;--ok:#22c55e;--bad:#ef4444;--line:rgba(255,255,255,.12);--shadow:0 18px 45px rgba(0,0,0,.35);--radius:22px}
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#17365f 0,#071224 42%,#020617 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}body{padding:env(safe-area-inset-top) 10px env(safe-area-inset-bottom)}
-    .app{max-width:920px;margin:0 auto;padding:10px 0 18px}.homeHero{padding:16px;border-radius:26px;background:linear-gradient(135deg,rgba(247,201,72,.18),rgba(45,212,191,.10));box-shadow:var(--shadow);border:1px solid var(--line);text-align:center}.logoMark{width:64px;height:64px;margin:0 auto 8px;border-radius:20px;background:linear-gradient(145deg,#f7c948,#d97706);display:grid;place-items:center;color:#071224;font-size:34px;font-weight:950}.homeHero h1{font-size:clamp(30px,8.6vw,48px);margin:0 0 4px}.sub{margin:0;color:var(--muted);line-height:1.35}.version{display:inline-flex;margin-top:10px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:12px;color:#e5e7eb}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}.card{background:rgba(14,29,53,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px}.playCard{text-align:center;padding:18px 14px}.card h2{margin:0 0 10px;font-size:20px}.small{font-size:13px;color:var(--muted);line-height:1.4}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.row{grid-template-columns:1fr}}
+    .app{max-width:920px;margin:0 auto;padding:10px 0 18px}.homeHero{padding:16px;border-radius:26px;background:linear-gradient(135deg,rgba(247,201,72,.18),rgba(45,212,191,.10));box-shadow:var(--shadow);border:1px solid var(--line);text-align:center}.logoMark{width:64px;height:64px;margin:0 auto 8px;border-radius:20px;background:linear-gradient(145deg,#f7c948,#d97706);display:grid;place-items:center;color:#071224;font-size:34px;font-weight:950}.homeHero h1{font-size:clamp(32px,9vw,52px);margin:0 0 4px}.sub{margin:0;color:var(--muted);line-height:1.35}.version{display:inline-flex;margin-top:10px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:12px;color:#e5e7eb}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}.card{background:rgba(14,29,53,.94);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px}.playCard{text-align:center;padding:18px 14px}.small{font-size:13px;color:var(--muted);line-height:1.4}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.row{grid-template-columns:1fr}}
     label{display:block;font-size:13px;color:#dbeafe;margin:9px 0 5px}input,select,textarea{width:100%;border:1px solid rgba(255,255,255,.15);background:#08162b;color:var(--text);border-radius:14px;padding:12px;outline:none}input[type=file]{padding:11px;background:#0b1930}textarea{min-height:130px;resize:vertical;white-space:pre;overflow:auto}input:focus,select:focus,textarea:focus{border-color:var(--gold)}
     .btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.btn{border:0;border-radius:16px;padding:13px 15px;font-weight:850;cursor:pointer;touch-action:manipulation;user-select:none;min-height:46px}.btn:active{transform:translateY(1px)}.bigBtn{width:100%;min-height:60px;font-size:20px;border-radius:20px}.primary{background:var(--gold);color:#111827}.secondary{background:#1d3558;color:#f8fafc;border:1px solid var(--line)}.ok{background:var(--ok);color:#04130a}.bad{background:var(--bad);color:#fff}.ghost{background:transparent;color:#f8fafc;border:1px solid rgba(255,255,255,.22)}.audioOn{background:#0f766e;color:#ecfeff}.audioOff{background:#334155;color:#e2e8f0}.shareBtn{background:#16a34a;color:#ecfdf5}.waBtn{background:#22c55e;color:#052e16}
-    .status{margin-top:10px;padding:11px;border-radius:16px;background:rgba(0,0,0,.22);color:#d1d5db;line-height:1.42}.pill{display:inline-flex;align-items:center;justify-content:center;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#e5e7eb;font-size:12px}.pillrow{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:10px}.hide{display:none!important}.kbd{font-family:ui-monospace,Consolas,monospace;background:#020617;border:1px solid rgba(255,255,255,.15);padding:2px 6px;border-radius:8px;color:#facc15}.fileBox{border:1px dashed rgba(255,255,255,.25);border-radius:18px;padding:12px;background:rgba(255,255,255,.04)}.linkBox{word-break:break-all;font-size:13px;color:#fde68a;background:#020617;border:1px solid rgba(250,204,21,.25);border-radius:14px;padding:10px;margin-top:10px}
+    .status{margin-top:10px;padding:11px;border-radius:16px;background:rgba(0,0,0,.22);color:#d1d5db;line-height:1.42}.pill{display:inline-flex;align-items:center;justify-content:center;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#e5e7eb;font-size:12px}.pillrow{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:10px}.hide{display:none!important}.adminOnly{display:none}.kbd{font-family:ui-monospace,Consolas,monospace;background:#020617;border:1px solid rgba(255,255,255,.15);padding:2px 6px;border-radius:8px;color:#facc15}.fileBox{border:1px dashed rgba(255,255,255,.25);border-radius:18px;padding:12px;background:rgba(255,255,255,.04)}.linkBox{word-break:break-all;font-size:13px;color:#fde68a;background:#020617;border:1px solid rgba(250,204,21,.25);border-radius:14px;padding:10px;margin-top:10px}
     details.cleanDetails{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:0;overflow:hidden}details.cleanDetails+details.cleanDetails{margin-top:10px}details.cleanDetails summary{list-style:none;padding:14px 15px;font-weight:850;cursor:pointer;display:flex;align-items:center;justify-content:space-between}details.cleanDetails summary::-webkit-details-marker{display:none}details.cleanDetails summary:after{content:'+';font-size:22px;color:var(--gold)}details.cleanDetails[open] summary:after{content:'–'}.detailsBody{padding:0 14px 14px;border-top:1px solid rgba(255,255,255,.08)}
     .game{display:none}.playScreen{min-height:calc(100dvh - 22px);padding:6px 0}.gameShell{min-height:calc(100dvh - 34px);display:flex;flex-direction:column;gap:10px}.gameTop{display:flex;justify-content:space-between;align-items:center;gap:8px}.gameTopLeft{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.miniBtn{min-height:36px;padding:8px 10px;border-radius:12px;font-size:12px}.questionCard{flex:1;display:flex;flex-direction:column;justify-content:center;background:rgba(14,29,53,.96);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:18px}.question{font-size:clamp(24px,7vw,42px);font-weight:900;line-height:1.18;text-align:center;margin:4px 0 18px}.answers{display:grid;gap:10px}.ans{width:100%;text-align:left;border:1px solid rgba(255,255,255,.14);background:#10213c;color:#fff;border-radius:20px;padding:15px;min-height:58px;font-weight:800;touch-action:manipulation;font-size:clamp(16px,4.5vw,20px)}.ans.correct{background:#14532d;border-color:#22c55e}.ans.wrong{background:#5b1111;border-color:#ef4444}.feedbackBox{margin-top:10px;padding:12px;border-radius:18px;background:rgba(0,0,0,.25);line-height:1.42}.gameActions{display:flex;gap:9px}.gameActions .btn{flex:1}.score{font-size:24px;font-weight:950;color:var(--gold)}.center{text-align:center}.footer{margin:14px 0;color:var(--muted);font-size:12px;text-align:center}
-    @media(max-width:520px){body{padding-left:8px;padding-right:8px}.app{padding-top:7px}.homeHero{padding:14px 12px}.logoMark{width:54px;height:54px;font-size:30px}.homeHero h1{font-size:30px}.sub{font-size:13px}.card{padding:12px}.playCard{padding:16px 12px}.questionCard{padding:14px;border-radius:24px}.question{font-size:26px}.ans{padding:14px;min-height:56px}.gameTop{align-items:flex-start}.pill{font-size:11px;padding:6px 8px}.status{font-size:13px}.gameShell{min-height:calc(100dvh - 28px)}}
+    .timerWrap{height:12px;background:#111827;border:1px solid rgba(255,255,255,.16);border-radius:999px;overflow:hidden;margin:4px 0 2px}.timerBar{height:100%;width:100%;background:linear-gradient(90deg,#22c55e,#facc15,#ef4444);transform-origin:left center;transition:width .2s linear}.timerText{font-weight:950;color:#facc15}.timeDanger{color:#f87171!important;animation:pulse .45s infinite alternate}@keyframes pulse{from{transform:scale(1)}to{transform:scale(1.08)}}
+    @media(max-width:520px){body{padding-left:8px;padding-right:8px}.app{padding-top:7px}.homeHero{padding:14px 12px}.logoMark{width:54px;height:54px;font-size:30px}.homeHero h1{font-size:32px}.sub{font-size:13px}.card{padding:12px}.playCard{padding:16px 12px}.questionCard{padding:14px;border-radius:24px}.question{font-size:26px}.ans{padding:14px;min-height:56px}.gameTop{align-items:flex-start}.pill{font-size:11px;padding:6px 8px}.status{font-size:13px}.gameShell{min-height:calc(100dvh - 28px)}}
   </style>
 </head>
 <body>
@@ -28,145 +30,94 @@
     <section id="home" class="homeView">
       <div class="homeHero">
         <div class="logoMark">✝</div>
-        <h1>Show Bíblico IBC</h1>
-        <p class="sub">Instale como app, jogue no celular e compartilhe com os irmãos.</p>
-        <span class="version">V13.4 · App e Divulgação</span>
+        <h1>Concurso Bíblico</h1>
+        <p class="sub">Jogue, aprenda e compartilhe com os irmãos.</p>
+        <span class="version">V13.5 · Banco oficial + cronômetro</span>
       </div>
-
       <div class="grid">
         <div class="card playCard">
           <button class="btn primary bigBtn" id="startBtn" type="button">Começar jogo</button>
-          <div class="pillrow"><span class="pill" id="countPill">Banco: 0</span><span class="pill" id="quickSetupLabel">10 perguntas · Todas</span></div>
-          <div class="btns" style="justify-content:center">
-            <button class="btn secondary" id="quickQtyBtn" type="button">Rodada rápida: 10</button>
-            <button class="btn audioOn" id="audioBtn" type="button">Som: ligado</button>
-          </div>
-          <div class="btns" style="justify-content:center">
-            <button class="btn ok" id="installAppBtn" type="button">Baixar / instalar app</button>
-            <button class="btn shareBtn" id="shareBtn" type="button">Compartilhar jogo</button>
-            <button class="btn waBtn" id="whatsBtn" type="button">Enviar no WhatsApp</button>
-          </div>
+          <div class="pillrow"><span class="pill" id="countPill">Banco: carregando...</span><span class="pill" id="quickSetupLabel">10 perguntas · 12s</span></div>
+          <div class="btns" style="justify-content:center"><button class="btn secondary" id="quickQtyBtn" type="button">Rodada rápida: 10</button><button class="btn audioOn" id="audioBtn" type="button">Som: ligado</button></div>
+          <div class="btns" style="justify-content:center"><button class="btn ok" id="installAppBtn" type="button">Baixar / instalar app</button><button class="btn shareBtn" id="shareBtn" type="button">Compartilhar jogo</button><button class="btn waBtn" id="whatsBtn" type="button">Enviar no WhatsApp</button></div>
           <div class="linkBox" id="publicLink">https://jaimeleite2012-sketch.github.io/show-biblico-ibc/</div>
           <div class="status" id="status">Pronto para jogar e compartilhar.</div>
         </div>
-
         <details class="cleanDetails">
           <summary>Configurações do jogo</summary>
           <div class="detailsBody">
-            <div class="row">
-              <div><label>Quantidade de perguntas</label><input id="qty" type="number" min="1" value="10"></div>
-              <div><label>Modo</label><select id="mode"><option value="normal">Normal</option><option value="shuffle">Embaralhar alternativas</option></select></div>
-            </div>
-            <div class="row">
-              <div><label>Categoria</label><select id="category"><option value="Todas">Todas</option></select></div>
-              <div><label>Nível</label><select id="level"><option value="Todos">Todos</option></select></div>
-            </div>
-            <div class="btns"><button class="btn secondary" id="testBtn" type="button">Testar botões e banco</button><button class="btn ghost" id="installHelpBtn" type="button">Ajuda de instalação</button></div>
+            <div class="row"><div><label>Quantidade de perguntas</label><input id="qty" type="number" min="1" value="10"></div><div><label>Tempo por pergunta</label><select id="timerSeconds"><option value="3">3 segundos</option><option value="6">6 segundos</option><option value="9">9 segundos</option><option value="12" selected>12 segundos</option></select></div></div>
+            <div class="row"><div><label>Categoria</label><select id="category"><option value="Todas">Todas</option></select></div><div><label>Nível</label><select id="level"><option value="Todos">Todos</option></select></div></div>
+            <div class="btns"><button class="btn secondary" id="testBtn" type="button">Testar jogo</button><button class="btn ghost" id="installHelpBtn" type="button">Ajuda de instalação</button></div>
           </div>
         </details>
-
-        <details class="cleanDetails">
+        <details class="cleanDetails adminOnly" id="adminPanel">
           <summary>Administração do banco</summary>
-          <div class="detailsBody">
-            <div class="status" id="bankInfo"></div>
-            <div class="fileBox" style="margin-top:10px">
-              <label>Importar banco direto do Excel</label>
-              <input id="excelFile" type="file" accept=".xlsx,.xls,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv">
-              <div class="btns"><button class="btn ok" id="importExcelBtn" type="button">Importar Excel</button><button class="btn secondary" id="downloadModelBtn" type="button">Baixar modelo CSV</button></div>
-              <p class="small">Colunas: <span class="kbd">pergunta A B C D correta categoria nivel referencia aprendizado</span></p>
-            </div>
-            <details class="cleanDetails" style="margin-top:10px">
-              <summary>Importação reserva por texto</summary>
-              <div class="detailsBody"><textarea id="pasteBox" placeholder="Cole aqui as linhas copiadas do Excel, se precisar usar o método antigo..."></textarea><div class="btns"><button class="btn secondary" id="importBtn" type="button">Importar texto</button><button class="btn ghost" id="sampleBtn" type="button">Colar exemplo</button></div></div>
-            </details>
-            <div class="btns"><button class="btn secondary" id="resetBtn" type="button">Restaurar demo</button><button class="btn bad" id="clearBtn" type="button">Apagar banco salvo</button></div>
-          </div>
+          <div class="detailsBody"><div class="status" id="bankInfo"></div><p class="small">Painel reservado. Para atualizar o banco oficial dos usuários, publique uma nova versão do arquivo <span class="kbd">questionBank.js</span> no GitHub.</p></div>
         </details>
       </div>
-      <div class="footer">Show Bíblico IBC · Projeto educacional bíblico</div>
+      <div class="footer">Concurso Bíblico · Projeto educacional bíblico</div>
     </section>
-
     <section id="game" class="game playScreen">
       <div class="gameShell">
-        <div class="gameTop"><div class="gameTopLeft"><span class="pill" id="progress">1/1</span><span class="pill" id="score">Acertos: 0</span><span class="pill" id="catMeta">Geral</span></div><button class="btn ghost miniBtn" id="quitBtn" type="button">Sair</button></div>
+        <div class="gameTop"><div class="gameTopLeft"><span class="pill" id="progress">1/1</span><span class="pill" id="score">Acertos: 0</span><span class="pill timerText" id="timerText">12s</span><span class="pill" id="catMeta">Geral</span></div><button class="btn ghost miniBtn" id="quitBtn" type="button">Sair</button></div>
+        <div class="timerWrap"><div class="timerBar" id="timerBar"></div></div>
         <div class="questionCard"><div class="question" id="questionText"></div><div class="answers" id="answers"></div><div class="feedbackBox hide" id="feedback"></div></div>
         <div class="gameActions"><button class="btn primary hide" id="nextBtn" type="button">Próxima</button></div>
       </div>
     </section>
-
-    <section id="result" class="game playScreen">
-      <div class="gameShell" style="justify-content:center"><div class="card center"><h2>Resultado final</h2><div class="score" id="finalScore"></div><p class="small" id="finalText"></p><div class="btns" style="justify-content:center"><button class="btn primary" id="againBtn" type="button">Jogar novamente</button><button class="btn secondary" id="homeBtn" type="button">Voltar ao início</button><button class="btn shareBtn" id="shareResultBtn" type="button">Compartilhar jogo</button></div></div></div>
-    </section>
+    <section id="result" class="game playScreen"><div class="gameShell" style="justify-content:center"><div class="card center"><h2>Resultado final</h2><div class="score" id="finalScore"></div><p class="small" id="finalText"></p><div class="btns" style="justify-content:center"><button class="btn primary" id="againBtn" type="button">Jogar novamente</button><button class="btn secondary" id="homeBtn" type="button">Voltar ao início</button><button class="btn shareBtn" id="shareResultBtn" type="button">Compartilhar jogo</button></div></div></div></section>
   </main>
-
 <script>
 (function(){
-  'use strict';
-  const APP_URL='https://jaimeleite2012-sketch.github.io/show-biblico-ibc/';
-  const STORAGE_KEY='showBiblicoIBC_v13_questions',AUDIO_KEY='showBiblicoIBC_audio_enabled';
-  const demoQuestions=[
-    {pergunta:'Quem construiu a arca?',A:'Noé',B:'Moisés',C:'Abraão',D:'Davi',correta:'A',categoria:'Pentateuco',nivel:'facil',referencia:'Gênesis 6',aprendizado:'Noé obedeceu a Deus e preparou a arca.'},
-    {pergunta:'Em qual livro está o relato da criação?',A:'Êxodo',B:'Gênesis',C:'Levítico',D:'Números',correta:'B',categoria:'Pentateuco',nivel:'facil',referencia:'Gênesis 1',aprendizado:'Gênesis apresenta Deus como Criador.'},
-    {pergunta:'Quem foi vendido por seus irmãos e levado ao Egito?',A:'Jacó',B:'Judá',C:'José',D:'Benjamim',correta:'C',categoria:'Pentateuco',nivel:'medio',referencia:'Gênesis 37',aprendizado:'Deus conduziu a história de José mesmo em meio à injustiça.'},
-    {pergunta:'Quem liderou Israel na saída do Egito?',A:'Josué',B:'Moisés',C:'Arão',D:'Samuel',correta:'B',categoria:'Pentateuco',nivel:'facil',referencia:'Êxodo 12',aprendizado:'Deus libertou Israel por meio de Moisés.'},
-    {pergunta:'Qual discípulo negou Jesus três vezes?',A:'Pedro',B:'João',C:'Tiago',D:'André',correta:'A',categoria:'Evangelhos',nivel:'medio',referencia:'Lucas 22',aprendizado:'Pedro falhou, mas foi restaurado por Cristo.'},
-    {pergunta:'Quem batizou Jesus no rio Jordão?',A:'Pedro',B:'João Batista',C:'Paulo',D:'Filipe',correta:'B',categoria:'Evangelhos',nivel:'facil',referencia:'Mateus 3',aprendizado:'João Batista preparou o caminho do Senhor.'},
-    {pergunta:'Qual apóstolo escreveu muitas cartas do Novo Testamento?',A:'Tomé',B:'Paulo',C:'Natanael',D:'Judas Tadeu',correta:'B',categoria:'Epístolas',nivel:'facil',referencia:'Romanos 1',aprendizado:'Paulo ensinou a igreja por meio de cartas inspiradas.'},
-    {pergunta:'Qual é o último livro da Bíblia?',A:'Judas',B:'Hebreus',C:'Apocalipse',D:'Atos',correta:'C',categoria:'Novo Testamento',nivel:'facil',referencia:'Apocalipse',aprendizado:'Apocalipse aponta para a vitória final de Cristo.'},
-    {pergunta:'Quem derrotou Golias?',A:'Saul',B:'Davi',C:'Samuel',D:'Eli',correta:'B',categoria:'Históricos',nivel:'facil',referencia:'1 Samuel 17',aprendizado:'Davi confiou no Senhor diante do gigante.'},
-    {pergunta:'Qual profeta foi lançado na cova dos leões?',A:'Daniel',B:'Jonas',C:'Elias',D:'Eliseu',correta:'A',categoria:'Profetas',nivel:'facil',referencia:'Daniel 6',aprendizado:'Daniel permaneceu fiel a Deus.'}
-  ];
-  let questions=[],round=[],current=0,hits=0,answered=false,deferredInstallPrompt=null;
-  let audioEnabled=(localStorage.getItem(AUDIO_KEY)!=='off'),audioCtx=null,musicTimer=null,musicStep=0,quickQty=10;
-  const $=id=>document.getElementById(id),safeText=v=>String(v==null?'':v).trim();
-  function norm(s){return safeText(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}
-  function esc(s){return safeText(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-  function normalizeLetter(v){v=safeText(v).toUpperCase();return ['A','B','C','D'].includes(v.charAt(0))?v.charAt(0):'A'}
-  function normalizeCorrect(v,q){let x=safeText(v).toUpperCase();if(['A','B','C','D'].includes(x.charAt(0)))return x.charAt(0);for(const k of ['A','B','C','D'])if(safeText(q[k]).toUpperCase()===x)return k;return 'A'}
-  function setStatus(msg){$('status').innerHTML=msg}
-  function load(){try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');questions=Array.isArray(saved)&&saved.length?saved:demoQuestions.slice()}catch(e){questions=demoQuestions.slice()}refreshUI();updateAudioButton();$('publicLink').textContent=APP_URL}
-  function save(qs){questions=qs;localStorage.setItem(STORAGE_KEY,JSON.stringify(qs));refreshUI()}
-  function refreshUI(){
-    $('countPill').textContent='Banco: '+questions.length;
-    const cats=[...new Set(questions.map(q=>safeText(q.categoria)||'Sem categoria'))].sort(),lvls=[...new Set(questions.map(q=>safeText(q.nivel)||'Sem nível'))].sort();
-    const catValue=$('category').value||'Todas',lvlValue=$('level').value||'Todos';
-    $('category').innerHTML='<option value="Todas">Todas</option>'+cats.map(c=>'<option>'+esc(c)+'</option>').join('');
-    $('level').innerHTML='<option value="Todos">Todos</option>'+lvls.map(l=>'<option>'+esc(l)+'</option>').join('');
-    if(cats.includes(catValue))$('category').value=catValue;if(lvls.includes(lvlValue))$('level').value=lvlValue;
-    $('bankInfo').innerHTML='<b>Total real:</b> '+questions.length+' perguntas<br><b>Categorias:</b> '+(cats.join(', ')||'-')+'<br><b>Níveis:</b> '+(lvls.join(', ')||'-');updateQuickLabel()
-  }
-  function updateQuickLabel(){const qty=$('qty')?safeText($('qty').value||quickQty):quickQty,cat=$('category')?$('category').value:'Todas';$('quickSetupLabel').textContent=qty+' perguntas · '+cat}
-  function rowsToQuestions(rows){rows=(rows||[]).map(r=>(r||[]).map(safeText)).filter(r=>r.some(Boolean));if(!rows.length)return[];const first=rows[0].map(norm),hasHeader=first.includes('pergunta')||first.includes('questao')||first.includes('enunciado');const aliases={pergunta:['pergunta','questao','questaoenunciado','enunciado'],A:['a','opcaoa','alternativaa','respostaa'],B:['b','opcaob','alternativab','respostab'],C:['c','opcaoc','alternativac','respostac'],D:['d','opcaod','alternativad','respostad'],correta:['correta','respostacorreta','gabarito','resposta','certa'],categoria:['categoria','tema','assunto'],nivel:['nivel','dificuldade','grau'],referencia:['referencia','referenciabiblica','versiculo'],aprendizado:['aprendizado','comentario','explicacao','observacao']};const map={};if(hasHeader)Object.keys(aliases).forEach(k=>{map[k]=first.findIndex(h=>aliases[k].includes(h))});const start=hasHeader?1:0,out=[];for(let i=start;i<rows.length;i++){const r=rows[i],get=(key,idx)=>hasHeader&&map[key]>=0?safeText(r[map[key]]):safeText(r[idx]);const q={pergunta:get('pergunta',0),A:get('A',1),B:get('B',2),C:get('C',3),D:get('D',4),correta:'A',categoria:get('categoria',6)||'Geral',nivel:get('nivel',7)||'medio',referencia:get('referencia',8),aprendizado:get('aprendizado',9)};q.correta=normalizeCorrect(get('correta',5),q);if(q.pergunta&&q.A&&q.B&&q.C&&q.D)out.push(q)}return out}
-  function splitCsv(line){const arr=[];let cur='',inQ=false;for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){inQ=!inQ;continue}if(ch===','&&!inQ){arr.push(cur);cur='';continue}cur+=ch}arr.push(cur);return arr}
-  function parsePasted(text){text=safeText(text);if(!text)return[];return rowsToQuestions(text.split(/\r?\n/).map(line=>line.includes('\t')?line.split('\t'):(line.includes(';')?line.split(';'):splitCsv(line))))}
-  function importExcelFile(){const file=$('excelFile').files&&$('excelFile').files[0];if(!file){setStatus('Selecione primeiro o arquivo Excel do banco de perguntas.');return}const ext=(file.name.split('.').pop()||'').toLowerCase(),reader=new FileReader();reader.onerror=()=>setStatus('Não consegui ler o arquivo. Tente novamente ou salve em .xlsx.');reader.onload=e=>{try{let rows=[];if(ext==='csv'){const text=String(e.target.result||'');rows=text.split(/\r?\n/).map(line=>line.includes(';')?line.split(';'):(line.includes('\t')?line.split('\t'):splitCsv(line)))}else{if(!window.XLSX){setStatus('A leitura do Excel ainda não carregou. Atualize a página e tente novamente.');return}const data=new Uint8Array(e.target.result),wb=XLSX.read(data,{type:'array'}),ws=wb.Sheets[wb.SheetNames[0]];rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''})}const parsed=rowsToQuestions(rows);if(!parsed.length){setStatus('Arquivo lido, mas nenhuma pergunta válida foi encontrada. Confira as colunas do banco.');return}save(parsed);setStatus('✅ Banco importado: <b>'+parsed.length+'</b> perguntas.');$('excelFile').value=''}catch(err){setStatus('Erro ao importar: '+esc(err.message||String(err)))}};if(ext==='csv')reader.readAsText(file,'utf-8');else reader.readAsArrayBuffer(file)}
-  function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-  function updateAudioButton(){$('audioBtn').textContent=audioEnabled?'Som: ligado':'Som: desligado';$('audioBtn').className='btn '+(audioEnabled?'audioOn':'audioOff')}
-  function ensureAudio(){if(!audioEnabled)return null;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;if(!audioCtx)audioCtx=new AC();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}
-  function tone(freq,dur,type,gain,delay){const ctx=ensureAudio();if(!ctx)return;const t=ctx.currentTime+(delay||0),osc=ctx.createOscillator(),g=ctx.createGain();osc.type=type||'sine';osc.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(gain||0.05,t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+dur);osc.connect(g).connect(ctx.destination);osc.start(t);osc.stop(t+dur+0.02)}
-  function correctSound(){tone(660,.16,'sine',.07,0);tone(880,.18,'sine',.06,.11);tone(1320,.22,'triangle',.04,.24)}function wrongSound(){tone(180,.22,'sawtooth',.045,0);tone(130,.25,'sawtooth',.035,.18)}function clickSound(){tone(420,.06,'triangle',.025,0)}
-  function playMusicPulse(){if(!audioEnabled||!audioCtx)return;const notes=[262,330,392,523,392,330,294,349],base=notes[musicStep%notes.length];tone(base,.35,'sine',.018,0);tone(base*1.5,.28,'triangle',.010,.02);musicStep++}function startMusic(){if(!audioEnabled)return;ensureAudio();if(musicTimer)return;playMusicPulse();musicTimer=setInterval(playMusicPulse,900)}function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}}
-  function toggleAudio(){audioEnabled=!audioEnabled;localStorage.setItem(AUDIO_KEY,audioEnabled?'on':'off');updateAudioButton();if(audioEnabled){clickSound();startMusic();setStatus('Som ativado.')}else{stopMusic();setStatus('Som desligado.')}}
-  function startGame(){clickSound();if(audioEnabled)startMusic();const cat=$('category').value,lvl=$('level').value;let pool=questions.filter(q=>(cat==='Todas'||safeText(q.categoria)===cat)&&(lvl==='Todos'||safeText(q.nivel)===lvl));if(!pool.length){setStatus('Nenhuma pergunta encontrada para esse filtro.');return}const qty=Math.max(1,Math.min(parseInt($('qty').value||'10',10),pool.length));round=shuffle(pool).slice(0,qty);current=0;hits=0;answered=false;$('home').style.display='none';$('result').style.display='none';$('game').style.display='block';renderQuestion();window.scrollTo(0,0)}
-  function renderQuestion(){answered=false;const q=round[current];$('progress').textContent=(current+1)+'/'+round.length;$('score').textContent='Acertos: '+hits;$('catMeta').textContent=q.categoria||'Geral';$('questionText').textContent=q.pergunta;$('feedback').classList.add('hide');$('nextBtn').classList.add('hide');const entries=['A','B','C','D'].map(k=>({k,text:q[k]})),list=$('mode').value==='shuffle'?shuffle(entries):entries;$('answers').innerHTML='';list.forEach(item=>{const b=document.createElement('button');b.type='button';b.className='ans';b.textContent=item.k+') '+item.text;b.addEventListener('click',()=>answer(item.k));$('answers').appendChild(b)})}
-  function answer(letter){if(answered)return;answered=true;const q=round[current],ok=letter===normalizeLetter(q.correta);if(ok){hits++;correctSound()}else wrongSound();Array.from(document.querySelectorAll('.ans')).forEach(b=>{const l=b.textContent.slice(0,1);if(l===normalizeLetter(q.correta))b.classList.add('correct');else if(l===letter)b.classList.add('wrong');b.disabled=true});$('score').textContent='Acertos: '+hits;$('feedback').classList.remove('hide');$('feedback').innerHTML=(ok?'✅ Correto!':'❌ Resposta correta: '+normalizeLetter(q.correta))+(q.referencia?'<br><b>Referência:</b> '+esc(q.referencia):'')+(q.aprendizado?'<br><b>Aprendizado:</b> '+esc(q.aprendizado):'');$('nextBtn').classList.remove('hide')}
-  function next(){clickSound();current++;current>=round.length?finish():renderQuestion()}function finish(){stopMusic();$('game').style.display='none';$('result').style.display='block';const pct=Math.round((hits/round.length)*100);$('finalScore').textContent=hits+' de '+round.length+' acertos · '+pct+'%';$('finalText').textContent=pct>=80?'Excelente resultado. Continue revisando as referências bíblicas.':pct>=50?'Bom caminho. Revise as perguntas erradas e tente novamente.':'Reforce o estudo bíblico e jogue outra rodada.';if(audioEnabled)correctSound();window.scrollTo(0,0)}
-  function goHome(){stopMusic();$('game').style.display='none';$('result').style.display='none';$('home').style.display='block';setStatus('Pronto para jogar e compartilhar.');window.scrollTo(0,0)}
-  function cycleQuickQty(){const opts=[5,10,15,20,30];let idx=opts.indexOf(parseInt($('qty').value||'10',10));idx=(idx+1)%opts.length;$('qty').value=opts[idx];$('quickQtyBtn').textContent='Rodada rápida: '+opts[idx];updateQuickLabel();clickSound()}
-  function downloadModel(){const blob=new Blob(['pergunta;A;B;C;D;correta;categoria;nivel;referencia;aprendizado\nQuem construiu a arca?;Noé;Moisés;Abraão;Davi;A;Pentateuco;facil;Gênesis 6;Noé obedeceu a Deus.\n'],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='modelo_banco_show_biblico_ibc.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),800)}
-  async function copyLink(){try{await navigator.clipboard.writeText(APP_URL);setStatus('✅ Link copiado. Agora é só colar no WhatsApp ou no grupo da igreja.')}catch(e){setStatus('Link do jogo: <br><b>'+APP_URL+'</b>')}}
-  async function shareGame(){const text='Jogue o Show Bíblico IBC comigo! Abra o link, instale na tela inicial e aprenda brincando: '+APP_URL;try{if(navigator.share){await navigator.share({title:'Show Bíblico IBC',text,url:APP_URL});setStatus('✅ Compartilhamento aberto.')}else await copyLink()}catch(e){await copyLink()}}
-  function shareWhats(){const text='Jogue o Show Bíblico IBC comigo! Abra o link, instale na tela inicial e aprenda brincando: '+APP_URL;window.location.href='https://wa.me/?text='+encodeURIComponent(text)}
-  async function installApp(){clickSound();const isiOS=/iphone|ipad|ipod/i.test(navigator.userAgent),isStandalone=window.navigator.standalone||window.matchMedia('(display-mode: standalone)').matches;if(isStandalone){setStatus('✅ O jogo já está instalado como app neste celular.');return}if(deferredInstallPrompt){deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;setStatus('Se a instalação foi confirmada, o ícone aparecerá na tela inicial.');return}if(isiOS){setStatus('No iPhone: abra este link no <b>Safari</b>, toque em <b>Compartilhar</b> e depois em <b>Adicionar à Tela de Início</b>.')}else{setStatus('No Android: abra no <b>Chrome</b>, toque nos <b>três pontinhos</b> e escolha <b>Instalar app</b> ou <b>Adicionar à tela inicial</b>.')}}
-  function helpInstall(){installApp()}
-  function bind(id,fn){const el=$(id);if(el)el.addEventListener('click',fn)}
-  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;setStatus('✅ Este celular permite instalar o jogo como app. Toque em Baixar / instalar app.')});
-  bind('startBtn',startGame);bind('quickQtyBtn',cycleQuickQty);bind('audioBtn',toggleAudio);bind('installAppBtn',installApp);bind('shareBtn',shareGame);bind('shareResultBtn',shareGame);bind('whatsBtn',shareWhats);bind('publicLink',copyLink);
-  bind('testBtn',()=>{clickSound();setStatus('✅ Botões funcionando.<br>✅ Banco: <b>'+questions.length+'</b> perguntas.<br>✅ Excel: '+(window.XLSX?'carregado':'aguardando internet/carregamento')+'<br>✅ Áudio: '+(audioEnabled?'ligado':'desligado'))});bind('installHelpBtn',helpInstall);
-  bind('importExcelBtn',importExcelFile);bind('downloadModelBtn',downloadModel);bind('importBtn',()=>{const parsed=parsePasted($('pasteBox').value);if(!parsed.length){setStatus('Não consegui importar. Confirme as colunas.');return}save(parsed);setStatus('✅ Banco importado pelo texto: <b>'+parsed.length+'</b> perguntas.')});bind('sampleBtn',()=>{$('pasteBox').value='pergunta\tA\tB\tC\tD\tcorreta\tcategoria\tnivel\treferencia\taprendizado\nQuem construiu a arca?\tNoé\tMoisés\tAbraão\tDavi\tA\tPentateuco\tfacil\tGênesis 6\tNoé obedeceu a Deus.\nQuem derrotou Golias?\tSaul\tDavi\tSamuel\tEli\tB\tHistóricos\tfacil\t1 Samuel 17\tDavi confiou no Senhor.'});
-  bind('resetBtn',()=>{save(demoQuestions.slice());setStatus('Banco demonstrativo restaurado.')});bind('clearBtn',()=>{localStorage.removeItem(STORAGE_KEY);questions=[];refreshUI();setStatus('Banco salvo apagado neste navegador.')});bind('nextBtn',next);bind('quitBtn',goHome);bind('againBtn',startGame);bind('homeBtn',goHome);
-  ['qty','category','level','mode'].forEach(id=>$(id).addEventListener('change',updateQuickLabel));load();
-  if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+'use strict';
+const APP_URL='https://jaimeleite2012-sketch.github.io/show-biblico-ibc/';
+const AUDIO_KEY='concursoBiblico_audio_enabled';
+const fallback=[{pergunta:'Quem construiu a arca?',A:'Noé',B:'Moisés',C:'Abraão',D:'Davi',correta:'A',categoria:'Pentateuco',nivel:'facil',referencia:'Gênesis 6',aprendizado:'Noé obedeceu a Deus.'}];
+let questions=[],round=[],current=0,hits=0,answered=false,deferredInstallPrompt=null,timer=null,timeLeft=12,totalTime=12;
+let audioEnabled=(localStorage.getItem(AUDIO_KEY)!=='off'),audioCtx=null,musicTimer=null,musicStep=0,tensionTimer=null;
+const $=id=>document.getElementById(id),txt=v=>String(v==null?'':v).trim();
+function esc(s){return txt(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function letter(v){v=txt(v).toUpperCase();return ['A','B','C','D'].includes(v[0])?v[0]:'A'}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function setStatus(m){$('status').innerHTML=m}
+function load(){questions=(Array.isArray(window.CONCURSO_BIBLICO_QUESTIONS)&&window.CONCURSO_BIBLICO_QUESTIONS.length?window.CONCURSO_BIBLICO_QUESTIONS:fallback).filter(q=>q.pergunta&&q.A&&q.B&&q.C&&q.D);refreshUI();updateAudioButton();$('publicLink').textContent=APP_URL;if(location.search.includes('admin=1'))$('adminPanel').style.display='block'}
+function refreshUI(){
+ $('countPill').textContent='Banco oficial: '+questions.length+' perguntas';
+ const cats=[...new Set(questions.map(q=>txt(q.categoria)||'Geral'))].sort(), lvls=[...new Set(questions.map(q=>txt(q.nivel)||'medio'))].sort();
+ const cv=$('category').value||'Todas',lv=$('level').value||'Todos';
+ $('category').innerHTML='<option value="Todas">Todas</option>'+cats.map(c=>'<option>'+esc(c)+'</option>').join('');
+ $('level').innerHTML='<option value="Todos">Todos</option>'+lvls.map(l=>'<option>'+esc(l)+'</option>').join('');
+ if(cats.includes(cv))$('category').value=cv;if(lvls.includes(lv))$('level').value=lv;
+ $('bankInfo').innerHTML='<b>Banco oficial publicado:</b> '+questions.length+' perguntas<br><b>Categorias:</b> '+cats.join(', ')+'<br><b>Níveis:</b> '+lvls.join(', ');
+ updateLabel();
+}
+function updateLabel(){$('quickSetupLabel').textContent=($('qty').value||10)+' perguntas · '+$('timerSeconds').value+'s'}
+function ensureAudio(){if(!audioEnabled)return null;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;if(!audioCtx)audioCtx=new AC();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}
+function tone(f,d,type,gain,delay){const c=ensureAudio();if(!c)return;const t=c.currentTime+(delay||0),o=c.createOscillator(),g=c.createGain();o.type=type||'sine';o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(gain||.04,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(c.destination);o.start(t);o.stop(t+d+.03)}
+function clickSound(){tone(440,.05,'triangle',.025)}function correctSound(){tone(660,.14,'sine',.07);tone(880,.18,'sine',.06,.1);tone(1320,.18,'triangle',.04,.22)}function wrongSound(){tone(170,.22,'sawtooth',.05);tone(120,.25,'sawtooth',.04,.16)}function timeoutSound(){tone(130,.18,'sawtooth',.055);tone(95,.28,'sawtooth',.045,.15);tone(70,.35,'sawtooth',.035,.35)}
+function tensionBeat(){if(!audioEnabled||!audioCtx)return;const seq=[196,207,220,233,247,262,247,233];const f=seq[musicStep%seq.length];tone(f,.18,'triangle',.025);tone(65,.12,'sawtooth',.018,.02);musicStep++}
+function startTension(){if(!audioEnabled)return;ensureAudio();if(tensionTimer)return;tensionBeat();tensionTimer=setInterval(tensionBeat,420)}
+function stopTension(){if(tensionTimer){clearInterval(tensionTimer);tensionTimer=null}}
+function updateAudioButton(){$('audioBtn').textContent=audioEnabled?'Som: ligado':'Som: desligado';$('audioBtn').className='btn '+(audioEnabled?'audioOn':'audioOff')}
+function toggleAudio(){audioEnabled=!audioEnabled;localStorage.setItem(AUDIO_KEY,audioEnabled?'on':'off');updateAudioButton();audioEnabled?setStatus('Som ativado.'):setStatus('Som desligado.');if(!audioEnabled)stopTension();else clickSound()}
+function startGame(){clickSound();startTension();const cat=$('category').value,lvl=$('level').value;let pool=questions.filter(q=>(cat==='Todas'||txt(q.categoria)===cat)&&(lvl==='Todos'||txt(q.nivel)===lvl));if(!pool.length){setStatus('Nenhuma pergunta encontrada para esse filtro.');return}const qty=Math.max(1,Math.min(parseInt($('qty').value||'10',10),pool.length));round=shuffle(pool).slice(0,qty);current=0;hits=0;answered=false;$('home').style.display='none';$('result').style.display='none';$('game').style.display='block';render();scrollTo(0,0)}
+function render(){answered=false;const q=round[current];$('progress').textContent=(current+1)+'/'+round.length;$('score').textContent='Acertos: '+hits;$('catMeta').textContent=q.categoria||'Geral';$('questionText').textContent=q.pergunta;$('feedback').classList.add('hide');$('nextBtn').classList.add('hide');$('answers').innerHTML='';['A','B','C','D'].map(k=>({k,text:q[k]})).forEach(it=>{const b=document.createElement('button');b.type='button';b.className='ans';b.textContent=it.k+') '+it.text;b.onclick=()=>answer(it.k,false);$('answers').appendChild(b)});startTimer()}
+function startTimer(){clearInterval(timer);totalTime=parseInt($('timerSeconds').value||'12',10);timeLeft=totalTime;paintTimer();timer=setInterval(()=>{timeLeft-=1;paintTimer();if(timeLeft<=0){clearInterval(timer);answer('',true)}},1000)}
+function paintTimer(){const pct=Math.max(0,(timeLeft/totalTime)*100);$('timerText').textContent=Math.max(0,timeLeft)+'s';$('timerBar').style.width=pct+'%';$('timerText').classList.toggle('timeDanger',timeLeft<=3)}
+function answer(ch,expired){if(answered)return;answered=true;clearInterval(timer);const q=round[current],ok=!expired&&ch===letter(q.correta);if(ok){hits++;correctSound()}else{expired?timeoutSound():wrongSound()}document.querySelectorAll('.ans').forEach(b=>{const l=b.textContent.slice(0,1);if(l===letter(q.correta))b.classList.add('correct');else if(l===ch)b.classList.add('wrong');b.disabled=true});$('score').textContent='Acertos: '+hits;$('feedback').classList.remove('hide');$('feedback').innerHTML=(ok?'✅ Correto!':expired?'⏱ Tempo esgotado! Resposta: '+letter(q.correta):'❌ Resposta correta: '+letter(q.correta))+(q.referencia?'<br><b>Referência:</b> '+esc(q.referencia):'')+(q.aprendizado?'<br><b>Aprendizado:</b> '+esc(q.aprendizado):'');$('nextBtn').classList.remove('hide')}
+function next(){clickSound();current++;current>=round.length?finish():render()}function finish(){clearInterval(timer);stopTension();$('game').style.display='none';$('result').style.display='block';const pct=Math.round((hits/round.length)*100);$('finalScore').textContent=hits+' de '+round.length+' acertos · '+pct+'%';$('finalText').textContent=pct>=80?'Excelente resultado!':pct>=50?'Bom caminho. Continue estudando.':'Revise as referências e tente novamente.';if(audioEnabled)correctSound();scrollTo(0,0)}
+function goHome(){clearInterval(timer);stopTension();$('game').style.display='none';$('result').style.display='none';$('home').style.display='block';setStatus('Pronto para jogar e compartilhar.');scrollTo(0,0)}
+function cycleQuickQty(){const opts=[5,10,15,20,30,50];let i=opts.indexOf(parseInt($('qty').value||'10',10));i=(i+1)%opts.length;$('qty').value=opts[i];$('quickQtyBtn').textContent='Rodada rápida: '+opts[i];updateLabel();clickSound()}
+async function copyLink(){try{await navigator.clipboard.writeText(APP_URL);setStatus('✅ Link copiado para compartilhar.')}catch(e){setStatus('Link: <b>'+APP_URL+'</b>')}}
+async function shareGame(){const text='Vamos jogar o Concurso Bíblico! Abra o link e instale na tela inicial: '+APP_URL;try{if(navigator.share){await navigator.share({title:'Concurso Bíblico',text,url:APP_URL});setStatus('✅ Compartilhamento aberto.')}else await copyLink()}catch(e){await copyLink()}}
+function shareWhats(){const text='Vamos jogar o Concurso Bíblico! Abra o link e instale na tela inicial: '+APP_URL;location.href='https://wa.me/?text='+encodeURIComponent(text)}
+async function installApp(){clickSound();const ios=/iphone|ipad|ipod/i.test(navigator.userAgent),standalone=window.navigator.standalone||matchMedia('(display-mode: standalone)').matches;if(standalone){setStatus('✅ O jogo já está instalado como app neste celular.');return}if(deferredInstallPrompt){deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;setStatus('Se confirmou, o ícone aparecerá na tela inicial.');return}setStatus(ios?'No iPhone: abra no <b>Safari</b>, toque em <b>Compartilhar</b> e em <b>Adicionar à Tela de Início</b>.':'No Android: abra no <b>Chrome</b>, toque nos três pontinhos e escolha <b>Instalar app</b>.')}
+function bind(id,fn){const el=$(id);if(el)el.addEventListener('click',fn)}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;setStatus('✅ Este celular permite instalar o jogo como app.')});
+bind('startBtn',startGame);bind('quickQtyBtn',cycleQuickQty);bind('audioBtn',toggleAudio);bind('installAppBtn',installApp);bind('shareBtn',shareGame);bind('shareResultBtn',shareGame);bind('whatsBtn',shareWhats);bind('publicLink',copyLink);bind('installHelpBtn',installApp);bind('testBtn',()=>setStatus('✅ Jogo funcionando.<br>✅ Banco oficial: <b>'+questions.length+'</b> perguntas.<br>✅ Cronômetro: '+$('timerSeconds').value+'s<br>✅ Som: '+(audioEnabled?'ligado':'desligado')));bind('nextBtn',next);bind('quitBtn',goHome);bind('againBtn',startGame);bind('homeBtn',goHome);
+['qty','category','level','timerSeconds'].forEach(id=>$(id).addEventListener('change',updateLabel));
+window.addEventListener('load',()=>{load();if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{})});
 })();
 </script>
 </body>
