@@ -1,4 +1,4 @@
-SHOW BÍBLICO IBC V13.3 PWA
+SHOW BÍBLICO IBC V13.4 PWA
 
 Arquivos principais:
 - index.html: jogo completo.
@@ -6,15 +6,17 @@ Arquivos principais:
 - sw.js: cache offline quando hospedado em HTTPS.
 - icon.svg: ícone do aplicativo.
 
-Novidades da versão 13.3:
-- Interface mobile reorganizada para melhor jogabilidade.
-- Tela inicial mais limpa.
+Novidades da versão 13.4:
+- Botão Baixar / instalar app.
+- Botão Compartilhar jogo.
+- Botão Enviar no WhatsApp.
+- Link público exibido dentro do próprio jogo.
+- Melhor orientação para instalar no iPhone e Android.
+
+Novidades mantidas:
+- Interface mobile limpa.
 - Configurações recolhíveis.
 - Administração do banco escondida em painel separado.
-- Tela de perguntas com foco no enunciado e alternativas.
-- Menos informação visual durante a partida.
-
-Novidades mantidas da versão 13.2:
 - Importação direta de banco por arquivo Excel .xlsx, .xls ou .csv.
 - Opção reserva de copiar e colar.
 - Música de fundo durante o jogo.
@@ -22,14 +24,17 @@ Novidades mantidas da versão 13.2:
 - Som característico para erro.
 - Botão para ligar/desligar som.
 
-Link do jogo:
+Link oficial do jogo:
 https://jaimeleite2012-sketch.github.io/show-biblico-ibc/
 
 Para forçar atualização no celular:
-https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=13.3
+https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=13.4
 
 Banco de perguntas:
 Modelo das colunas:
 pergunta A B C D correta categoria nivel referencia aprendizado
 
 A importação direta aceita Excel e CSV. A primeira aba do Excel será usada como banco de perguntas.
+
+Observação:
+Esta versão permite todos jogarem online pelo mesmo link, cada um no seu celular. Para salas simultâneas, ranking ao vivo e placar compartilhado, será necessária uma próxima fase com banco de dados online.
