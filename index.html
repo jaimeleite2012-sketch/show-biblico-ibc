@@ -9,6 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Show Bíblico IBC">
   <link rel="manifest" href="manifest.webmanifest">
   <title>Show Bíblico IBC</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <style>
     :root{--bg:#071224;--card:#0e1d35;--card2:#132542;--text:#f8fafc;--muted:#a8b3c7;--gold:#f7c948;--cyan:#2dd4bf;--ok:#22c55e;--bad:#ef4444;--warn:#f97316;--radius:20px;--shadow:0 18px 45px rgba(0,0,0,.35)}
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:radial-gradient(circle at top,#17365f 0,#071224 45%,#020617 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}body{padding:env(safe-area-inset-top) 14px env(safe-area-inset-bottom)}
@@ -16,20 +17,20 @@
     h1{font-size:clamp(28px,8vw,48px);margin:0 0 6px;letter-spacing:.3px}.sub{margin:0;color:var(--muted);line-height:1.45}.pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.pill{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#e5e7eb;font-size:13px}
     .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}@media(min-width:760px){.grid{grid-template-columns:1.05fr .95fr}.wide{grid-column:1/-1}}
     .card{background:rgba(14,29,53,.92);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}.card h2{margin:0 0 12px;font-size:20px}.small{font-size:13px;color:var(--muted);line-height:1.4}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}@media(max-width:520px){.row,.row3{grid-template-columns:1fr}}
-    label{display:block;font-size:13px;color:#dbeafe;margin:10px 0 6px}input,select,textarea{width:100%;border:1px solid rgba(255,255,255,.15);background:#08162b;color:var(--text);border-radius:14px;padding:12px;outline:none}textarea{min-height:150px;resize:vertical;white-space:pre;overflow:auto}input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+    label{display:block;font-size:13px;color:#dbeafe;margin:10px 0 6px}input,select,textarea{width:100%;border:1px solid rgba(255,255,255,.15);background:#08162b;color:var(--text);border-radius:14px;padding:12px;outline:none}input[type=file]{padding:11px;background:#0b1930}textarea{min-height:150px;resize:vertical;white-space:pre;overflow:auto}input:focus,select:focus,textarea:focus{border-color:var(--gold)}
     .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.btn{border:0;border-radius:16px;padding:13px 15px;font-weight:800;cursor:pointer;touch-action:manipulation;user-select:none;min-height:46px}.btn:active{transform:translateY(1px)}.primary{background:var(--gold);color:#111827}.secondary{background:#1d3558;color:#f8fafc;border:1px solid rgba(255,255,255,.12)}.ok{background:var(--ok);color:#04130a}.bad{background:var(--bad);color:#fff}.warn{background:var(--warn);color:#111827}.ghost{background:transparent;color:#f8fafc;border:1px solid rgba(255,255,255,.22)}
-    .status{margin-top:12px;padding:12px;border-radius:16px;background:rgba(0,0,0,.22);color:#d1d5db;line-height:1.45}.game{display:none}.question{font-size:clamp(20px,5.4vw,34px);line-height:1.22;margin:8px 0 16px}.answers{display:grid;gap:10px}.ans{width:100%;text-align:left;border:1px solid rgba(255,255,255,.14);background:#10213c;color:#fff;border-radius:18px;padding:14px;min-height:54px;font-weight:750;touch-action:manipulation}.ans.correct{background:#14532d;border-color:#22c55e}.ans.wrong{background:#5b1111;border-color:#ef4444}.meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.score{font-size:22px;font-weight:900;color:var(--gold)}.hide{display:none!important}.center{text-align:center}.footer{margin:18px 0;color:var(--muted);font-size:12px;text-align:center}.divider{height:1px;background:rgba(255,255,255,.10);margin:14px 0}.kbd{font-family:ui-monospace,Consolas,monospace;background:#020617;border:1px solid rgba(255,255,255,.15);padding:2px 6px;border-radius:8px;color:#facc15}
+    .status{margin-top:12px;padding:12px;border-radius:16px;background:rgba(0,0,0,.22);color:#d1d5db;line-height:1.45}.game{display:none}.question{font-size:clamp(20px,5.4vw,34px);line-height:1.22;margin:8px 0 16px}.answers{display:grid;gap:10px}.ans{width:100%;text-align:left;border:1px solid rgba(255,255,255,.14);background:#10213c;color:#fff;border-radius:18px;padding:14px;min-height:54px;font-weight:750;touch-action:manipulation}.ans.correct{background:#14532d;border-color:#22c55e}.ans.wrong{background:#5b1111;border-color:#ef4444}.meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.score{font-size:22px;font-weight:900;color:var(--gold)}.hide{display:none!important}.center{text-align:center}.footer{margin:18px 0;color:var(--muted);font-size:12px;text-align:center}.divider{height:1px;background:rgba(255,255,255,.10);margin:14px 0}.kbd{font-family:ui-monospace,Consolas,monospace;background:#020617;border:1px solid rgba(255,255,255,.15);padding:2px 6px;border-radius:8px;color:#facc15}.audioOn{background:#0f766e;color:#ecfeff}.audioOff{background:#334155;color:#e2e8f0}.fileBox{border:1px dashed rgba(255,255,255,.24);border-radius:18px;padding:12px;background:rgba(255,255,255,.04)}
   </style>
 </head>
 <body>
   <main class="app">
     <section class="hero">
       <h1>Show Bíblico IBC</h1>
-      <p class="sub">Jogo bíblico de perguntas para celular. Versão PWA simples, compatível com Safari/iPhone e Android.</p>
+      <p class="sub">Jogo bíblico de perguntas para celular. Agora com importação direta do Excel, música de fundo e sons de acerto/erro.</p>
       <div class="pillrow">
         <span class="pill" id="countPill">Banco: 0 perguntas</span>
-        <span class="pill">V13.1 GitHub Pages</span>
-        <span class="pill">Sem internet após cache</span>
+        <span class="pill">V13.2 Excel + Áudio</span>
+        <span class="pill">iPhone / Android</span>
       </div>
     </section>
 
@@ -47,9 +48,10 @@
         <div class="btns">
           <button class="btn primary" id="startBtn" type="button">Começar jogo</button>
           <button class="btn secondary" id="testBtn" type="button">Testar botões e banco</button>
+          <button class="btn audioOn" id="audioBtn" type="button">Som: ligado</button>
           <button class="btn ghost" id="installHelpBtn" type="button">Instalar no celular</button>
         </div>
-        <div class="status" id="status">Pronto para jogar.</div>
+        <div class="status" id="status">Pronto para jogar. A música começa após tocar em Começar jogo ou Som: ligado.</div>
       </div>
 
       <div class="card">
@@ -63,13 +65,25 @@
       </div>
 
       <div class="card wide">
-        <h2>Importar banco do Excel</h2>
-        <p class="small">No Excel, deixe as colunas nesta ordem, copie as linhas e cole abaixo: <span class="kbd">pergunta A B C D correta categoria nivel referencia aprendizado</span></p>
-        <textarea id="pasteBox" placeholder="Cole aqui as linhas copiadas do Excel..."></textarea>
-        <div class="btns">
-          <button class="btn ok" id="importBtn" type="button">Importar banco colado</button>
-          <button class="btn secondary" id="sampleBtn" type="button">Colar exemplo</button>
+        <h2>Importar banco direto do Excel</h2>
+        <p class="small">Selecione um arquivo <b>.xlsx</b>, <b>.xls</b> ou <b>.csv</b>. A primeira linha deve conter os cabeçalhos ou as colunas devem seguir esta ordem: <span class="kbd">pergunta A B C D correta categoria nivel referencia aprendizado</span>.</p>
+        <div class="fileBox">
+          <label>Arquivo do banco de perguntas</label>
+          <input id="excelFile" type="file" accept=".xlsx,.xls,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv">
+          <div class="btns">
+            <button class="btn ok" id="importExcelBtn" type="button">Importar Excel</button>
+            <button class="btn secondary" id="downloadModelBtn" type="button">Baixar modelo CSV</button>
+          </div>
         </div>
+        <div class="divider"></div>
+        <details>
+          <summary class="small">Opção reserva: importar copiando e colando</summary>
+          <textarea id="pasteBox" placeholder="Cole aqui as linhas copiadas do Excel, se precisar usar o método antigo..."></textarea>
+          <div class="btns">
+            <button class="btn secondary" id="importBtn" type="button">Importar texto colado</button>
+            <button class="btn ghost" id="sampleBtn" type="button">Colar exemplo</button>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -108,6 +122,7 @@
 (function(){
   'use strict';
   const STORAGE_KEY='showBiblicoIBC_v13_questions';
+  const AUDIO_KEY='showBiblicoIBC_audio_enabled';
   const demoQuestions=[
     {pergunta:'Quem construiu a arca?',A:'Noé',B:'Moisés',C:'Abraão',D:'Davi',correta:'A',categoria:'Pentateuco',nivel:'facil',referencia:'Gênesis 6',aprendizado:'Noé obedeceu a Deus e preparou a arca.'},
     {pergunta:'Em qual livro está o relato da criação?',A:'Êxodo',B:'Gênesis',C:'Levítico',D:'Números',correta:'B',categoria:'Pentateuco',nivel:'facil',referencia:'Gênesis 1',aprendizado:'Gênesis apresenta Deus como Criador.'},
@@ -121,14 +136,13 @@
     {pergunta:'Qual profeta foi lançado na cova dos leões?',A:'Daniel',B:'Jonas',C:'Elias',D:'Eliseu',correta:'A',categoria:'Profetas',nivel:'facil',referencia:'Daniel 6',aprendizado:'Daniel permaneceu fiel a Deus.'}
   ];
   let questions=[],round=[],current=0,hits=0,answered=false;
+  let audioEnabled=(localStorage.getItem(AUDIO_KEY)!=='off'),audioCtx=null,musicTimer=null,musicStep=0;
   const $=id=>document.getElementById(id);
   function safeText(v){return String(v==null?'':v).trim();}
-  function normalizeLetter(v){v=safeText(v).toUpperCase();return ['A','B','C','D'].includes(v)?v:'A';}
-  function load(){
-    try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');questions=Array.isArray(saved)&&saved.length?saved:demoQuestions.slice();}
-    catch(e){questions=demoQuestions.slice();}
-    refreshUI();
-  }
+  function norm(s){return safeText(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');}
+  function normalizeLetter(v){v=safeText(v).toUpperCase();return ['A','B','C','D'].includes(v.charAt(0))?v.charAt(0):'A';}
+  function normalizeCorrect(v,q){let x=safeText(v).toUpperCase();if(['A','B','C','D'].includes(x.charAt(0)))return x.charAt(0);for(const k of ['A','B','C','D']){if(safeText(q[k]).toUpperCase()===x)return k;}return 'A';}
+  function load(){try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');questions=Array.isArray(saved)&&saved.length?saved:demoQuestions.slice();}catch(e){questions=demoQuestions.slice();}refreshUI();updateAudioButton();}
   function save(qs){questions=qs;localStorage.setItem(STORAGE_KEY,JSON.stringify(qs));refreshUI();}
   function refreshUI(){
     $('countPill').textContent='Banco: '+questions.length+' perguntas';
@@ -139,26 +153,61 @@
     $('bankInfo').innerHTML='<b>Total real:</b> '+questions.length+' perguntas<br><b>Categorias:</b> '+(cats.join(', ')||'-')+'<br><b>Níveis:</b> '+(lvls.join(', ')||'-');
   }
   function escapeHtml(s){return safeText(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
-  function parsePasted(text){
-    text=safeText(text); if(!text) return [];
-    const lines=text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  function parsePasted(text){text=safeText(text);if(!text)return[];const rows=text.split(/\r?\n/).map(line=>line.includes('\t')?line.split('\t'):splitCsv(line));return rowsToQuestions(rows);}
+  function splitCsv(line){const arr=[];let cur='',inQ=false;for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){inQ=!inQ;continue}if(ch===','&&!inQ){arr.push(cur);cur='';continue}cur+=ch}arr.push(cur);return arr;}
+  function rowsToQuestions(rows){
+    rows=(rows||[]).map(r=>(r||[]).map(safeText)).filter(r=>r.some(Boolean)); if(!rows.length)return[];
+    const first=rows[0].map(norm); const hasHeader=first.includes('pergunta')||first.includes('questao')||first.includes('questaoenunciado');
+    const aliases={pergunta:['pergunta','questao','questaoenunciado','enunciado'],A:['a','opcaoa','alternativaa','respostaa'],B:['b','opcaob','alternativab','respostab'],C:['c','opcaoc','alternativac','respostac'],D:['d','opcaod','alternativad','respostad'],correta:['correta','respostacorreta','gabarito','resposta','certa'],categoria:['categoria','tema','assunto'],nivel:['nivel','dificuldade','grau'],referencia:['referencia','referenciabiblica','versiculo'],aprendizado:['aprendizado','comentario','explicacao','observacao']};
+    const map={};
+    if(hasHeader){Object.keys(aliases).forEach(key=>{map[key]=first.findIndex(h=>aliases[key].includes(h));});}
+    const start=hasHeader?1:0;
     const out=[];
-    for(let line of lines){
-      let cells=line.includes('\t')?line.split('\t'):splitCsv(line);
-      cells=cells.map(safeText);
-      if(cells.length<6) continue;
-      if(cells[0].toLowerCase()==='pergunta') continue;
-      out.push({pergunta:cells[0],A:cells[1]||'',B:cells[2]||'',C:cells[3]||'',D:cells[4]||'',correta:normalizeLetter(cells[5]),categoria:cells[6]||'Geral',nivel:cells[7]||'medio',referencia:cells[8]||'',aprendizado:cells.slice(9).join(' ')||''});
+    for(let i=start;i<rows.length;i++){
+      const r=rows[i];
+      const get=(key,idx)=>hasHeader&&map[key]>=0?safeText(r[map[key]]):safeText(r[idx]);
+      const q={pergunta:get('pergunta',0),A:get('A',1),B:get('B',2),C:get('C',3),D:get('D',4),correta:'A',categoria:get('categoria',6)||'Geral',nivel:get('nivel',7)||'medio',referencia:get('referencia',8),aprendizado:get('aprendizado',9)};
+      q.correta=normalizeCorrect(get('correta',5),q);
+      if(q.pergunta&&q.A&&q.B&&q.C&&q.D)out.push(q);
     }
-    return out.filter(q=>q.pergunta&&q.A&&q.B&&q.C&&q.D);
+    return out;
   }
-  function splitCsv(line){
-    const arr=[];let cur='',inQ=false;
-    for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){inQ=!inQ;continue}if(ch===','&&!inQ){arr.push(cur);cur='';continue}cur+=ch}arr.push(cur);return arr;
+  function importExcelFile(){
+    const file=$('excelFile').files&&$('excelFile').files[0];
+    if(!file){setStatus('Selecione primeiro o arquivo Excel do banco de perguntas.');return;}
+    const ext=(file.name.split('.').pop()||'').toLowerCase();
+    const reader=new FileReader();
+    reader.onerror=()=>setStatus('Não consegui ler o arquivo. Tente novamente ou salve em .xlsx.');
+    reader.onload=e=>{
+      try{
+        let rows=[];
+        if(ext==='csv'){
+          const text=String(e.target.result||''); rows=text.split(/\r?\n/).map(line=>line.includes(';')?line.split(';'):(line.includes('\t')?line.split('\t'):splitCsv(line)));
+        }else{
+          if(!window.XLSX){setStatus('A biblioteca de leitura do Excel ainda não carregou. Verifique a internet, atualize a página e tente novamente.');return;}
+          const data=new Uint8Array(e.target.result); const wb=XLSX.read(data,{type:'array'}); const ws=wb.Sheets[wb.SheetNames[0]]; rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+        }
+        const parsed=rowsToQuestions(rows);
+        if(!parsed.length){setStatus('Arquivo lido, mas nenhuma pergunta válida foi encontrada. Confirme as colunas: pergunta, A, B, C, D, correta, categoria, nivel, referencia, aprendizado.');return;}
+        save(parsed); setStatus('✅ Banco importado direto do arquivo <b>'+escapeHtml(file.name)+'</b>: <b>'+parsed.length+'</b> perguntas carregadas.'); $('excelFile').value='';
+      }catch(err){setStatus('Erro ao importar: '+escapeHtml(err.message||String(err))+'. Confira o formato do arquivo.');}
+    };
+    if(ext==='csv')reader.readAsText(file,'utf-8'); else reader.readAsArrayBuffer(file);
   }
   function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
   function setStatus(msg){$('status').innerHTML=msg;}
+  function updateAudioButton(){$('audioBtn').textContent=audioEnabled?'Som: ligado':'Som: desligado';$('audioBtn').className='btn '+(audioEnabled?'audioOn':'audioOff');}
+  function ensureAudio(){if(!audioEnabled)return null;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;if(!audioCtx)audioCtx=new AC();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx;}
+  function tone(freq,dur,type,gain,delay){const ctx=ensureAudio();if(!ctx)return;const t=ctx.currentTime+(delay||0);const osc=ctx.createOscillator();const g=ctx.createGain();osc.type=type||'sine';osc.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(gain||0.05,t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+dur);osc.connect(g).connect(ctx.destination);osc.start(t);osc.stop(t+dur+0.02);}
+  function correctSound(){tone(660,.16,'sine',.07,0);tone(880,.18,'sine',.06,.11);tone(1320,.22,'triangle',.04,.24);}
+  function wrongSound(){tone(180,.22,'sawtooth',.045,0);tone(130,.25,'sawtooth',.035,.18);}
+  function clickSound(){tone(420,.06,'triangle',.025,0);}
+  function playMusicPulse(){if(!audioEnabled||!audioCtx)return;const notes=[262,330,392,523,392,330,294,349];const base=notes[musicStep%notes.length];tone(base,.35,'sine',.018,0);tone(base*1.5,.28,'triangle',.010,.02);musicStep++;}
+  function startMusic(){if(!audioEnabled)return;ensureAudio();if(musicTimer)return;playMusicPulse();musicTimer=setInterval(playMusicPulse,900);}
+  function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null;}}
+  function toggleAudio(){audioEnabled=!audioEnabled;localStorage.setItem(AUDIO_KEY,audioEnabled?'on':'off');updateAudioButton();if(audioEnabled){clickSound();startMusic();setStatus('Som ativado. A música de fundo tocará durante o jogo.');}else{stopMusic();setStatus('Som desligado.');}}
   function startGame(){
+    clickSound(); if(audioEnabled)startMusic();
     const cat=$('category').value, lvl=$('level').value;
     let pool=questions.filter(q=>(cat==='Todas'||safeText(q.categoria)===cat)&&(lvl==='Todos'||safeText(q.nivel)===lvl));
     if(!pool.length){setStatus('Nenhuma pergunta encontrada para esse filtro. Troque categoria/nível.');return;}
@@ -170,30 +219,25 @@
     answered=false;const q=round[current];
     $('progress').textContent='Pergunta '+(current+1)+'/'+round.length;$('score').textContent='Acertos: '+hits;$('catMeta').textContent=(q.categoria||'Geral')+' · '+(q.nivel||'');
     $('questionText').textContent=q.pergunta;$('feedback').classList.add('hide');$('feedback').textContent='';$('nextBtn').classList.add('hide');
-    const entries=['A','B','C','D'].map(k=>({k,text:q[k]}));
-    const list=$('mode').value==='shuffle'?shuffle(entries):entries;
-    $('answers').innerHTML='';
+    const entries=['A','B','C','D'].map(k=>({k,text:q[k]})); const list=$('mode').value==='shuffle'?shuffle(entries):entries; $('answers').innerHTML='';
     list.forEach(item=>{const b=document.createElement('button');b.type='button';b.className='ans';b.textContent=item.k+') '+item.text;b.addEventListener('click',()=>answer(item.k,b),{passive:true});$('answers').appendChild(b);});
   }
   function answer(letter,btn){
-    if(answered) return; answered=true; const q=round[current]; const ok=letter===normalizeLetter(q.correta); if(ok) hits++;
+    if(answered)return;answered=true;const q=round[current];const ok=letter===normalizeLetter(q.correta);if(ok){hits++;correctSound();}else{wrongSound();}
     Array.from(document.querySelectorAll('.ans')).forEach(b=>{const l=b.textContent.slice(0,1);if(l===normalizeLetter(q.correta))b.classList.add('correct');else if(l===letter)b.classList.add('wrong');b.disabled=true;});
-    $('score').textContent='Acertos: '+hits;
-    $('feedback').classList.remove('hide');
-    $('feedback').innerHTML=(ok?'✅ Correto!':'❌ Resposta correta: '+normalizeLetter(q.correta))+ (q.referencia?'<br><b>Referência:</b> '+escapeHtml(q.referencia):'')+(q.aprendizado?'<br><b>Aprendizado:</b> '+escapeHtml(q.aprendizado):'');
+    $('score').textContent='Acertos: '+hits;$('feedback').classList.remove('hide');
+    $('feedback').innerHTML=(ok?'✅ Correto!':'❌ Resposta correta: '+normalizeLetter(q.correta))+(q.referencia?'<br><b>Referência:</b> '+escapeHtml(q.referencia):'')+(q.aprendizado?'<br><b>Aprendizado:</b> '+escapeHtml(q.aprendizado):'');
     $('nextBtn').classList.remove('hide');
   }
-  function next(){current++; if(current>=round.length) finish(); else renderQuestion();}
-  function finish(){
-    $('game').style.display='none';$('result').style.display='block'; const pct=Math.round((hits/round.length)*100);
-    $('finalScore').textContent=hits+' de '+round.length+' acertos · '+pct+'%';
-    $('finalText').textContent=pct>=80?'Excelente resultado. Continue revisando as referências bíblicas.':pct>=50?'Bom caminho. Revise as perguntas erradas e tente novamente.':'Reforce o estudo bíblico e jogue outra rodada.';
-  }
-  function goHome(){$('game').style.display='none';$('result').style.display='none';$('home').classList.remove('hide');setStatus('Pronto para jogar.');}
+  function next(){clickSound();current++;if(current>=round.length)finish();else renderQuestion();}
+  function finish(){stopMusic();$('game').style.display='none';$('result').style.display='block';const pct=Math.round((hits/round.length)*100);$('finalScore').textContent=hits+' de '+round.length+' acertos · '+pct+'%';$('finalText').textContent=pct>=80?'Excelente resultado. Continue revisando as referências bíblicas.':pct>=50?'Bom caminho. Revise as perguntas erradas e tente novamente.':'Reforce o estudo bíblico e jogue outra rodada.';if(audioEnabled){correctSound();}}
+  function goHome(){stopMusic();$('game').style.display='none';$('result').style.display='none';$('home').classList.remove('hide');setStatus('Pronto para jogar.');}
+  function downloadModel(){const header='pergunta;A;B;C;D;correta;categoria;nivel;referencia;aprendizado\n';const row='Quem construiu a arca?;Noé;Moisés;Abraão;Davi;A;Pentateuco;facil;Gênesis 6;Noé obedeceu a Deus e preparou a arca.\n';const blob=new Blob([header+row],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='modelo_banco_show_biblico_ibc.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),800);}
   function bind(id,fn){const el=$(id);el.addEventListener('click',fn);el.addEventListener('touchend',function(e){e.preventDefault();fn(e);},{passive:false});}
-  bind('startBtn',startGame);bind('testBtn',()=>setStatus('✅ Botões funcionando.<br>✅ Banco carregado: <b>'+questions.length+'</b> perguntas.<br>✅ Navegador: '+escapeHtml(navigator.userAgent.slice(0,90))));
-  bind('installHelpBtn',()=>setStatus('No iPhone: abra pelo Safari, toque em Compartilhar e depois em <b>Adicionar à Tela de Início</b>. No Android: menu do Chrome e <b>Adicionar à tela inicial</b>.'));
-  bind('importBtn',()=>{const parsed=parsePasted($('pasteBox').value);if(!parsed.length){setStatus('Não consegui importar. Confirme se as colunas estão na ordem correta.');return;}save(parsed);setStatus('✅ Banco importado com sucesso: <b>'+parsed.length+'</b> perguntas.');});
+  bind('startBtn',startGame);bind('testBtn',()=>{clickSound();setStatus('✅ Botões funcionando.<br>✅ Banco carregado: <b>'+questions.length+'</b> perguntas.<br>✅ Excel direto: '+(window.XLSX?'biblioteca carregada':'aguardando carregar / verifique internet')+'<br>✅ Áudio: '+(audioEnabled?'ligado':'desligado')+'<br>✅ Navegador: '+escapeHtml(navigator.userAgent.slice(0,90)));});
+  bind('audioBtn',toggleAudio);bind('installHelpBtn',()=>setStatus('No iPhone: abra pelo Safari, toque em Compartilhar e depois em <b>Adicionar à Tela de Início</b>. No Android: menu do Chrome e <b>Adicionar à tela inicial</b>.'));
+  bind('importExcelBtn',importExcelFile);bind('downloadModelBtn',downloadModel);
+  bind('importBtn',()=>{const parsed=parsePasted($('pasteBox').value);if(!parsed.length){setStatus('Não consegui importar. Confirme se as colunas estão na ordem correta.');return;}save(parsed);setStatus('✅ Banco importado pelo texto colado: <b>'+parsed.length+'</b> perguntas.');});
   bind('sampleBtn',()=>{$('pasteBox').value='pergunta\tA\tB\tC\tD\tcorreta\tcategoria\tnivel\treferencia\taprendizado\nQuem construiu a arca?\tNoé\tMoisés\tAbraão\tDavi\tA\tPentateuco\tfacil\tGênesis 6\tNoé obedeceu a Deus.\nQuem derrotou Golias?\tSaul\tDavi\tSamuel\tEli\tB\tHistóricos\tfacil\t1 Samuel 17\tDavi confiou no Senhor.';});
   bind('resetBtn',()=>{save(demoQuestions.slice());setStatus('Banco demonstrativo restaurado.');});
   bind('clearBtn',()=>{localStorage.removeItem(STORAGE_KEY);questions=[];refreshUI();setStatus('Banco salvo apagado neste navegador. Use restaurar demo ou importe novo banco.');});
