@@ -1,5 +1,5 @@
-const CACHE_NAME = 'show-biblico-ibc-v13-4-20260622';
-const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
+const CACHE_NAME = 'concurso-biblico-v13-5-20260623';
+const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './questionBank.js'];
 
 self.addEventListener('install', event => {
   event.waitUntil(
