@@ -1,36 +1,17 @@
-CONCURSO BÍBLICO V13.5 PWA
+CONCURSO BÍBLICO V13.6 - FASES
 
-Arquivos principais:
-- index.html: jogo completo.
-- questionBank.js: banco oficial centralizado de perguntas.
-- manifest.webmanifest: configuração PWA e nome do app instalado.
-- sw.js: cache offline quando hospedado em HTTPS.
-- icon.svg: ícone do aplicativo.
+Banco completo: 2.271 perguntas.
 
-Novidades da versão 13.5:
-- Cabeçalho alterado para Concurso Bíblico.
-- Banco oficial centralizado carregado automaticamente pelo jogo.
-- Usuário comum não precisa importar nem atualizar banco.
-- Administração do banco retirada da experiência normal do jogador.
-- Cronômetro por pergunta com opções de 3, 6, 9 ou 12 segundos.
-- Barra visual de tempo na tela.
-- Trilha sonora de tensão durante a rodada.
-- Som de tempo esgotado.
-- Mantidos sons de acerto e erro.
-- Nome do app instalado alterado para Concurso Bíblico.
+Estrutura:
+- Fase 1: 450 perguntas
+- Fase 2: 450 perguntas
+- Fase 3: 450 perguntas
+- Fase 4: 450 perguntas
+- Fase 5: 450 perguntas
+- Desafio Final: 21 perguntas
 
-Novidades mantidas:
-- Interface mobile limpa.
-- Botão Baixar / instalar app.
-- Botão Compartilhar jogo.
-- Botão Enviar no WhatsApp.
-- Link público exibido dentro do próprio jogo.
-
-Link oficial do jogo:
-https://jaimeleite2012-sketch.github.io/show-biblico-ibc/
-
-Para forçar atualização no celular:
-https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=13.5
-
-Observação:
-Esta versão permite todos jogarem online pelo mesmo link, cada um no seu celular. Para salas simultâneas, ranking ao vivo e placar compartilhado, será necessária uma próxima fase com banco de dados online.
+Para publicar no GitHub Pages:
+1. Envie todos os arquivos e pastas deste pacote para a raiz do repositório.
+2. Substitua index.html, sw.js, manifest.webmanifest e phaseBankManifest.js.
+3. Envie a pasta phases completa.
+4. Abra: https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=13.6

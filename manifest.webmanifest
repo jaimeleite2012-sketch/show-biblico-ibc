@@ -1,7 +1,7 @@
 {
   "name": "Concurso Bíblico",
   "short_name": "Concurso Bíblico",
-  "description": "Jogo bíblico de perguntas para celular, Android e iPhone.",
+  "description": "Jogo bíblico de perguntas por fases.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

@@ -1,42 +1,5 @@
-const CACHE_NAME = 'concurso-biblico-v13-5-20260623';
-const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './questionBank.js'];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(FILES))
-      .then(() => self.skipWaiting())
-  );
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.map(key => key !== CACHE_NAME ? caches.delete(key) : null)))
-      .then(() => self.clients.claim())
-  );
-});
-
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  const requestUrl = new URL(event.request.url);
-
-  if (event.request.mode === 'navigate' || requestUrl.pathname.endsWith('/index.html')) {
-    event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-          return response;
-        })
-        .catch(() => caches.match('./index.html'))
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-      .catch(() => caches.match('./index.html'))
-  );
-});
+const CACHE_NAME='concurso-biblico-v13-6-fases-20260623';
+const FILES=['./','./index.html','./manifest.webmanifest','./icon.svg','./phaseBankManifest.js','./phases/fase1.js','./phases/fase2.js','./phases/fase3.js','./phases/fase4.js','./phases/fase5.js','./phases/desafio_final.js'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.map(k=>k!==CACHE_NAME?caches.delete(k):null))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)).catch(()=>caches.match('./index.html')))});
