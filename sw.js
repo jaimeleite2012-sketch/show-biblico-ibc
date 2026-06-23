@@ -1,4 +1,4 @@
-const CACHE_NAME = 'show-biblico-ibc-v13-3-20260622';
+const CACHE_NAME = 'show-biblico-ibc-v13-4-20260622';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
