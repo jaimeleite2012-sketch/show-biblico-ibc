@@ -1,4 +1,4 @@
-SHOW BÍBLICO IBC V13.2 PWA
+SHOW BÍBLICO IBC V13.3 PWA
 
 Arquivos principais:
 - index.html: jogo completo.
@@ -6,30 +6,27 @@ Arquivos principais:
 - sw.js: cache offline quando hospedado em HTTPS.
 - icon.svg: ícone do aplicativo.
 
-Novidades da versão 13.2:
+Novidades da versão 13.3:
+- Interface mobile reorganizada para melhor jogabilidade.
+- Tela inicial mais limpa.
+- Configurações recolhíveis.
+- Administração do banco escondida em painel separado.
+- Tela de perguntas com foco no enunciado e alternativas.
+- Menos informação visual durante a partida.
+
+Novidades mantidas da versão 13.2:
 - Importação direta de banco por arquivo Excel .xlsx, .xls ou .csv.
-- Mantida opção reserva de copiar e colar.
+- Opção reserva de copiar e colar.
 - Música de fundo durante o jogo.
 - Som característico para acerto.
 - Som característico para erro.
 - Botão para ligar/desligar som.
 
-Como publicar no GitHub Pages:
-1. Abra o repositório no GitHub.
-2. Vá em Settings > Pages.
-3. Em Source, selecione Deploy from a branch.
-4. Em Branch, selecione main.
-5. Em Folder, selecione /root.
-6. Clique em Save.
-
 Link do jogo:
 https://jaimeleite2012-sketch.github.io/show-biblico-ibc/
 
-Como usar no iPhone:
-1. Abra o link no Safari.
-2. Teste os botões.
-3. Toque em Compartilhar.
-4. Toque em Adicionar à Tela de Início.
+Para forçar atualização no celular:
+https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=13.3
 
 Banco de perguntas:
 Modelo das colunas:
