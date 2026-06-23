@@ -1,12 +1,12 @@
 {
-  "name": "Show Bíblico IBC",
-  "short_name": "Show Bíblico",
+  "name": "Concurso Bíblico",
+  "short_name": "Concurso Bíblico",
   "description": "Jogo bíblico de perguntas para celular, Android e iPhone.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#071224",
-  "theme_color": "#13213a",
+  "theme_color": "#071224",
   "orientation": "portrait",
   "icons": [
     {
