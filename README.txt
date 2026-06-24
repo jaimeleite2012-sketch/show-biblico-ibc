@@ -1,12 +1,13 @@
-CONCURSO BÍBLICO V14.7 · REFERÊNCIA SEM GABARITO
+CONCURSO BÍBLICO V14.9 · FONTE MODERNA
 
 Principais mudanças desta versão:
-- Botão principal alterado de "Começar fase" para "Jogar".
-- Ao errar, o jogo não mostra a resposta correta.
-- Ao errar ou acabar o tempo, aparece um card flutuante com a referência bíblica para consulta posterior.
-- O card permite copiar a referência, sem revelar o gabarito.
-- Mantidas as 75 fases com 30 perguntas cada e aprovação de 70%.
-- Mantidas respostas embaralhadas, progressão bloqueada, ranking, recompensas e gráfico de evolução.
+- Fonte do jogo atualizada para uma aparência mais moderna, vibrante e amigável.
+- Títulos, botões, abas, pontuação e perguntas usam uma fonte mais expressiva.
+- Textos gerais usam uma fonte mais limpa e legível.
+- Mantidos: cadastro obrigatório, aprovação com 60%, respostas embaralhadas, referência sem gabarito, ranking, recompensas, progressão por fases, sons e música.
 
 Teste no GitHub Pages:
-https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=14.7
+https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=14.9
+
+Observação:
+A fonte principal carrega online quando houver internet. Caso esteja offline, o jogo usa automaticamente fontes modernas do próprio sistema.
