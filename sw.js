@@ -1,4 +1,4 @@
-const CACHE_NAME='concurso-biblico-v14-5-progressao-efeitos';
+const CACHE_NAME='concurso-biblico-v14-7-referencia-sem-gabarito';
 const FILES=['./','./index.html','./manifest.webmanifest','./icon.png','./logo_cordeiro.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.map(k=>k!==CACHE_NAME?caches.delete(k):null))).then(()=>self.clients.claim())));
