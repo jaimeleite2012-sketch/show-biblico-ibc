@@ -1,13 +1,19 @@
-CONCURSO BÍBLICO V14.10 · PAINEL DE EVOLUÇÃO
+CONCURSO BÍBLICO V14.11 · TEMPO 20S E RETOMAR JOGO
 
-Atualização focada no acompanhamento visual da jornada.
 
-Novidades:
-- Novo painel de evolução com KPIs claros.
-- Gráfico de aproveitamento por fase com meta de 60%.
-- Linha visual com área iluminada, marcadores e destaque da última fase.
-- Próxima meta do jogador claramente exibida.
-- Mapa das 75 fases mantido.
+Ajuste aplicado:
+- Tempo padrão por pergunta alterado para 20 segundos.
+- Mantidas as opções 3, 6, 9, 12 e 20 segundos.
+- Se o jogador responder antes do fim do tempo, o jogo avança normalmente para a próxima pergunta.
+- Mantidas as regras de não exibir gabarito em erro ou tempo esgotado.
+- Mantidos efeitos, pontuação, fases, ranking, recompensas e painel de evolução.
 
-Link de teste:
-https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=14.10
+Link de teste após publicação no GitHub:
+https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=14.11
+
+Novidades V14.11:
+- Tempo padrão por pergunta ajustado para 20 segundos.
+- Se o jogador responder rápido, o jogo avança normalmente.
+- Rodada em andamento salva automaticamente no aparelho.
+- Ao retornar, aparece o botão "Continuar de onde parei" com fase e pergunta salvas.
+- Se o jogador tocar em Sair, a rodada também fica disponível para continuar depois.
