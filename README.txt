@@ -1,12 +1,12 @@
-CONCURSO BÍBLICO V14.12 · JORNADA ATUAL E MODO CRIANÇAS
+CONCURSO BÍBLICO V14.13 · GRUPOS E KIDS AJUSTADO
 
 Novidades:
-- Fases concluídas ficam bloqueadas; o jogador sempre continua na fase atual liberada.
-- Ao retornar, o jogo respeita a rodada salva ou a fase atual do jogador.
-- Novo Modo Crianças com somente perguntas fáceis.
-- Modo Crianças usa visual colorido, fontes maiores e música infantil/alegre.
-- Mantidas 30 perguntas por fase e aprovação com 60%.
-- Mantidas respostas embaralhadas, referência sem gabarito, medalhas, ranking e progresso.
+- Novo modo Grupos / equipes para jogar com 2, 3 ou 4 grupos no mesmo aparelho.
+- No modo Grupos, o grupo que acerta continua jogando; se errar ou deixar o tempo acabar, a vez passa para o próximo grupo.
+- Placar visual dos grupos durante a rodada.
+- Resultado final mostra o placar dos grupos com pontos e acertos.
+- Modo Crianças mantém a dinâmica, mas agora troca textos amarelos/problemáticos por azul-marinho para melhorar a leitura.
+- Mantidas 30 perguntas por fase, aprovação com 60%, cadastro obrigatório, fases concluídas bloqueadas, respostas embaralhadas, referência sem gabarito, medalhas, ranking e progresso.
 
 Link de teste sugerido:
-https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=14.12
+https://jaimeleite2012-sketch.github.io/show-biblico-ibc/?v=14.13
